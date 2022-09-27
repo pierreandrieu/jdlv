@@ -46,7 +46,11 @@ def tests_nombre_cellules():
     nb_cellules_premier_fichier()
     nb_cellules_deuxieme_fichier()
 
+
 def tests_mise_a_jour():
+    """
+    Fonctions de test pour la mise a jour des cellules
+    """
     pass
 
 
