@@ -4,7 +4,7 @@ class Jdlv:
     """
     def __init__(self, path_file: str):
         # private attribute
-        self.__nb_cells: int = 3
+        self.__nb_cells = 3
 
     @property
     def n_cells(self) -> int:
