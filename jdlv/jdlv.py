@@ -3,4 +3,9 @@ class Jdlv:
     Class for GL TP2 : jeu de la vie
     """
     def __init__(self, path_file: str):
-        pass
+        # private attribute
+        self.__nb_cells: int = 3
+
+    @property
+    def n_cells(self) -> int:
+        return self.__nb_cells
