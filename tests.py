@@ -31,12 +31,14 @@ def tests_initialisation():
 
 
 def tests_nombre_cellules():
-    pass
-
+    jdlv = Jdlv("jdlv1.txt")
+    assert jdlv.nb_cells == 3
 
 def tests_mise_a_jour():
     pass
 
 
 tests_initialisation()
+tests_nombre_cellules()
+
 
