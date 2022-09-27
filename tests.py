@@ -31,8 +31,11 @@ def tests_initialisation():
 
 
 def tests_nombre_cellules():
-    jdlv = Jdlv("jdlv1.txt")
-    assert jdlv.nb_cells == 3
+    """
+    Tests concernant la possibilité pour l'utilisateur de récuperer le nombre de cellules vivantes dans la boite de
+    petri
+    """
+    pass
 
 def tests_mise_a_jour():
     pass
