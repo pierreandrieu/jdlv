@@ -39,8 +39,12 @@ def tests_nombre_cellules():
         jdlv: Jdlv = Jdlv(path_file="jdlv1.txt")
         assert jdlv.n_cells == 3
 
-    nb_cellules_premier_fichier()
+    def nb_cellules_deuxieme_fichier():
+        jdlv: Jdlv = Jdlv(path_file="jdlv1.txt")
+        assert jdlv.n_cells == 6
 
+    nb_cellules_premier_fichier()
+    nb_cellules_deuxieme_fichier()
 
 def tests_mise_a_jour():
     pass
