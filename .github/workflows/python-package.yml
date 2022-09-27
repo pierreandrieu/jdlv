@@ -5,7 +5,7 @@ name: Python package
 
 on:
   push:
-    branches: [ "main", "pierre_initialisation" ]
+    branches: [ "main", "pierre_initialisation, pierre_nb_cells" ]
   pull_request:
     branches: [ "main" ]
 
