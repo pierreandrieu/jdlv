@@ -7,7 +7,7 @@ on:
   push:
     branches: [ "main", "pierre_initialisation, pierre_nb_cells" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "main", "pierre_initialisation, pierre_nb_cells" ]
 
 jobs:
   build:
