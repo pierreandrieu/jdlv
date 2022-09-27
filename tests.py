@@ -35,7 +35,16 @@ def tests_nombre_cellules():
     Tests concernant la possibilité pour l'utilisateur de récuperer le nombre de cellules vivantes dans la boite de
     petri
     """
-    pass
+    def nb_cellules_premier_fichier():
+        jdlv: Jdlv = Jdlv(path_file="jdlv_1.txt")
+        assert jdlv.n_cells == 3
+
+    def nb_cellules_deuxieme_fichier():
+        jdlv: Jdlv = Jdlv(path_file="jdlv_2.txt")
+        assert jdlv.n_cells == 6
+
+    nb_cellules_premier_fichier()
+    nb_cellules_deuxieme_fichier()
 
 def tests_mise_a_jour():
     pass
