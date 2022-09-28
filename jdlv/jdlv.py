@@ -2,6 +2,7 @@ from typing import List
 
 
 class Jdlv:
+
     """
     Class for GL TP2 : jeu de la vie
     """
@@ -32,5 +33,32 @@ class Jdlv:
     def n_cells(self) -> int:
         return self.__nb_cells
 
+    def __petri_vide(self) -> List[List[str]]:
+        """
+        fonction qui renvoie une liste de n listes contenant chacune m fois la chaîne "."
+        n nombre de lignes
+        m nombre de colonnes
+        :return: List[List[str]]
+        """
+        list_new_lines: List = []
+        for i in range(self.__n):
+            list_new_lines.append([])
+            for j in range(self.__m):
+                list_new_lines[i].append(".")
+        return list_new_lines
+
+    @staticmethod
+    def __from_list_list_str_to_str(petri: List[List[str]]) -> str:
+        return "\n".join(["".join(petri[i]) for i in range(len(petri))])
+
     def next_generation(self) -> str:
-        return ""
+        """
+        fonction qui renvoie une chaine de caractères correspondant à la prochaine étape du jeu de la vie
+        :return: str
+        """
+        # initialisation de la boite de petri
+        list_new_lines: List[List[str]] = self.__petri_vide()
+
+        # on renvoie la "version string"
+        return Jdlv.__from_list_list_str_to_str(list_new_lines)
+
