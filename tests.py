@@ -63,8 +63,12 @@ def tests_mise_a_jour():
     def test_point_fixe_non_vide():
         test_comparaison("jdlv_4.txt")
 
+    def test_cellule_meurt():
+        test_comparaison("jdlv_5.txt")
+
     test_vide()
     test_point_fixe_non_vide()
+    test_cellule_meurt()
 
 
 tests_initialisation()
