@@ -60,7 +60,11 @@ def tests_mise_a_jour():
     def test_vide():
         test_comparaison(path_file="jdlv_3.txt")
 
+    def test_point_fixe_non_vide():
+        test_comparaison("jdlv_4.txt")
+
     test_vide()
+    test_point_fixe_non_vide()
 
 
 tests_initialisation()

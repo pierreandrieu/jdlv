@@ -49,6 +49,10 @@ class Jdlv:
 
     @staticmethod
     def __from_list_list_str_to_str(petri: List[List[str]]) -> str:
+        """
+        :param petri: Liste de Liste de str
+        :return: str suivant : les List[str] sont concaténées en str et séparées entre elles par "\n"
+        """
         return "\n".join(["".join(petri[i]) for i in range(len(petri))])
 
     def next_generation(self) -> str:
