@@ -134,9 +134,6 @@ class Jdlv:
             if self.doit_mourir(i, j):
 
                 Jdlv.__tue_cellule(petri, i, j)
-        else:
-            if self.__doit_naitre(i, j):
-                self.__pose_cellule(petri, i, j)
 
     def next_generation(self) -> str:
         """
