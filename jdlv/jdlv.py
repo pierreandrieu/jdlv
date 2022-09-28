@@ -31,3 +31,6 @@ class Jdlv:
     @property
     def n_cells(self) -> int:
         return self.__nb_cells
+
+    def next_generation(self) -> str:
+        return ""

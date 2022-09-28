@@ -49,12 +49,22 @@ def tests_nombre_cellules():
 
 def tests_mise_a_jour():
     """
-    Fonctions de test pour la mise a jour des cellules
+    Fonctions de test pour la mise à jour des cellules
     """
-    pass
+
+    def test_comparaison(path_file: str):
+        jdlv = Jdlv(path_file=path_file)
+        jdlv_output = Jdlv(path_file=path_file[:-4]+"_expected_next.txt")
+        assert jdlv.next_generation() == str(jdlv_output)
+
+    def test_vide():
+        test_comparaison(path_file="jdlv_3.txt")
+
+    test_vide()
 
 
 tests_initialisation()
 tests_nombre_cellules()
+tests_mise_a_jour()
 
 
