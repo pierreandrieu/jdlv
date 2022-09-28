@@ -60,9 +60,13 @@ class Jdlv:
         fonction qui renvoie une chaine de caractères correspondant à la prochaine étape du jeu de la vie
         :return: str
         """
-        # initialisation de la boite de petri
+        # initialisation de la boite de petri à vide
         list_new_lines: List[List[str]] = self.__petri_vide()
 
+        # on considère l'état précédent
+        for i in range(self.__n):
+            for j in range(self.__m):
+                if self.__matrix[i][j] == "*":
+                    list_new_lines[i][j] = "*"
         # on renvoie la "version string"
         return Jdlv.__from_list_list_str_to_str(list_new_lines)
-
