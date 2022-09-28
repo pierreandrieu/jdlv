@@ -132,7 +132,6 @@ class Jdlv:
         """
         if self.contient_cellule(i, j):
             if self.doit_mourir(i, j):
-
                 Jdlv.__tue_cellule(petri, i, j)
 
     def next_generation(self) -> str:

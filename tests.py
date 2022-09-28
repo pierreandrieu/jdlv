@@ -85,8 +85,8 @@ def tests_mise_a_jour():
         test_mort_sous_population()
         test_mort_sur_population()
 
-    # def test_reproduction():
-    #    test_comparaison(path_file="jdlv_7.txt")
+    def test_reproduction():
+        test_comparaison(path_file="jdlv_8.txt")
 
     def test_prise_en_compte_bornes():
         test_comparaison(path_file="jdlv_6.txt")
@@ -95,7 +95,7 @@ def tests_mise_a_jour():
     test_point_fixe_non_vide()
     test_cellule_meurt()
     test_prise_en_compte_bornes()
-    # test_reproduction()
+    test_reproduction()
 
 
 tests_initialisation()
