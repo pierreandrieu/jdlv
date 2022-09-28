@@ -110,16 +110,9 @@ class Jdlv:
         :param j: coordonnée y d'intérêt
         :return: le nombre de cellules vivantes autour de la case(i, j)
         """
-        #return len([(x, y) for x in range(i-1, i+2) for y in range(j-1, j+2) if  self.__inside(x, y) and
-        #            self.contient_cellule(x, y) and not (x == i and y == j)] )
-        cpt = 0
-        for x in range(i-1, i+2):
-            for y in range(j-1, j+2):
-                if self.__inside(x, y):
-                    if not (x == i and y == j):
-                        if self.contient_cellule(x, y):
-                            cpt += 1
-        return cpt
+        return len([(x, y) for x in range(i-1, i+2) for y in range(j-1, j+2) if  self.__inside(x, y) and
+                   self.contient_cellule(x, y) and not (x == i and y == j)] )
+
 
     def voisins(self, x: int, y: int):
         return self.__nb_voisins(x, y)
