@@ -76,7 +76,14 @@ def tests_mise_a_jour():
         """
         Teste la mort de la cellule. Une cellule vivante meurt ssi + de 3 voisins ou - de 2 voisins
         """
-        test_comparaison(path_file="jdlv_5.txt")
+        def test_mort_sous_population():
+            test_comparaison(path_file="jdlv_5.txt")
+
+        def test_mort_sur_population():
+            test_comparaison(path_file="jdlv_6.txt")
+
+        test_mort_sous_population()
+        test_mort_sur_population()
 
     test_vide()
     test_point_fixe_non_vide()
