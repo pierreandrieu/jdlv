@@ -143,3 +143,7 @@ class Jdlv:
 
         # on renvoie la "version string"
         return Jdlv.__from_list_list_str_to_str(list_new_lines)
+
+
+jdlv = Jdlv("../jdlv_6.txt")
+print(jdlv.next_generation())
