@@ -79,11 +79,11 @@ def tests_mise_a_jour():
         def test_mort_sous_population():
             test_comparaison(path_file="jdlv_5.txt")
 
-    #    def test_mort_sur_population():
-    #        test_comparaison(path_file="jdlv_6.txt")
+        def test_mort_sur_population():
+            test_comparaison(path_file="jdlv_7.txt")
 
         test_mort_sous_population()
-    #    test_mort_sur_population()
+        test_mort_sur_population()
 
     # def test_reproduction():
     #    test_comparaison(path_file="jdlv_7.txt")

@@ -102,7 +102,7 @@ class Jdlv:
         :return: True ssi la cellule doit mourir
         """
         nb_voisins = self.__nb_voisins(i, j)
-        return not 2 <= nb_voisins <= 3
+        return not 2 <= nb_voisins
 
     def __nb_voisins(self, i: int, j: int) -> int:
         """
