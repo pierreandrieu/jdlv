@@ -49,12 +49,57 @@ def tests_nombre_cellules():
 
 def tests_mise_a_jour():
     """
-    Fonctions de test pour la mise a jour des cellules
+    Fonctions de test pour la mise à jour des cellules
     """
-    pass
+
+    def test_comparaison(path_file: str):
+        jdlv = Jdlv(path_file=path_file)
+        jdlv_output = Jdlv(path_file=path_file[:-4]+"_expected_next.txt")
+        assert jdlv.next_generation() == str(jdlv_output)
+
+    def test_vide():
+        """
+        Teste le cas suivant : si aucune cellule vivante, aucune vivante à l'étape suivante
+        Assertion error si le test échoue
+        """
+        test_comparaison(path_file="jdlv_3.txt")
+
+    def test_point_fixe_non_vide():
+        """
+        Teste le cas suivant : chaque cellule vivante doit rester en vie a l'étape suivante et aucune reproduction
+        C'est un point fixe : aucun changement
+        Assertion error si le test échoue
+        """
+        test_comparaison(path_file="jdlv_4.txt")
+
+    def test_cellule_meurt():
+        """
+        Teste la mort de la cellule. Une cellule vivante meurt ssi + de 3 voisins ou - de 2 voisins
+        """
+        def test_mort_sous_population():
+            test_comparaison(path_file="jdlv_5.txt")
+
+        def test_mort_sur_population():
+            test_comparaison(path_file="jdlv_7.txt")
+
+        test_mort_sous_population()
+        test_mort_sur_population()
+
+    def test_reproduction():
+        test_comparaison(path_file="jdlv_8.txt")
+
+    def test_prise_en_compte_bornes():
+        test_comparaison(path_file="jdlv_6.txt")
+
+    test_vide()
+    test_point_fixe_non_vide()
+    test_cellule_meurt()
+    test_prise_en_compte_bornes()
+    test_reproduction()
 
 
 tests_initialisation()
 tests_nombre_cellules()
+tests_mise_a_jour()
 
 
