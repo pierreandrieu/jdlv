@@ -58,13 +58,25 @@ def tests_mise_a_jour():
         assert jdlv.next_generation() == str(jdlv_output)
 
     def test_vide():
+        """
+        Teste le cas suivant : si aucune cellule vivante, aucune vivante à l'étape suivante
+        Assertion error si le test échoue
+        """
         test_comparaison(path_file="jdlv_3.txt")
 
     def test_point_fixe_non_vide():
-        test_comparaison("jdlv_4.txt")
+        """
+        Teste le cas suivant : chaque cellule vivante doit rester en vie a l'étape suivante et aucune reproduction
+        C'est un point fixe : aucun changement
+        Assertion error si le test échoue
+        """
+        test_comparaison(path_file="jdlv_4.txt")
 
     def test_cellule_meurt():
-        test_comparaison("jdlv_5.txt")
+        """
+        Teste la mort de la cellule. Une cellule vivante meurt ssi + de 3 voisins ou - de 2 voisins
+        """
+        test_comparaison(path_file="jdlv_5.txt")
 
     test_vide()
     test_point_fixe_non_vide()

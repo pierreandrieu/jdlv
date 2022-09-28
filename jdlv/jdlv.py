@@ -33,6 +33,18 @@ class Jdlv:
     def n_cells(self) -> int:
         return self.__nb_cells
 
+    def contient_cellule(self, i: int, j: int):
+        """
+        :param i: coordonnée x de la cellule
+        :param j: coordonnée y de la cellule
+        :return: True ssi une cellule est en vie aux coordonnées (i, j)
+        """
+        return self.__matrix[i][j] == "*"
+
+    @staticmethod
+    def pose_cellule(petri: List[List[str]], i: int, j: int):
+        petri[i][j] = "*"
+
     def __petri_vide(self) -> List[List[str]]:
         """
         fonction qui renvoie une liste de n listes contenant chacune m fois la chaîne "."
@@ -55,6 +67,42 @@ class Jdlv:
         """
         return "\n".join(["".join(petri[i]) for i in range(len(petri))])
 
+    @staticmethod
+    def __tue_cellule(petri: List[List[str]], i: int, j: int):
+        """
+        :param petri: la boîte de pétri
+        :param i: coordonnée x de la cellule à tuer
+        :param j: coordonnée y de la cellule à tuer
+        :return:
+        """
+        petri[i][j] = "."
+
+    def __doit_mourir(self, i: int, j: int) -> bool:
+        """
+        :param i: coordonnée x de la cellule
+        :param j: coordonnée y de la cellule
+        :return: True ssi la cellule doit mourir
+        """
+        return self.__nb_voisins(i, j) < 2
+
+    def __nb_voisins(self, i: int, j: int) -> int:
+        """
+        :param i: coordonnée x d'intérêt
+        :param j: coordonnée y d'intérêt
+        :return: le nombre de cellules vivantes autour de la case(i, j)
+        """
+        return len([(x, y) for x in range(i-1, i+2) for y in range(j-1, j+2) if self.contient_cellule(x, y)
+                    and not (x == i and y == j)])
+
+    def __update_position(self, petri: List[List[str]], i: int, j: int):
+        """
+        :param petri: La boite de pétri
+        :param i: coordonnée x d'intérêt
+        :param j: coordonnée y d'intérêt
+        """
+        if self.__doit_mourir(i, j):
+            Jdlv.__tue_cellule(petri, i, j)
+
     def next_generation(self) -> str:
         """
         fonction qui renvoie une chaine de caractères correspondant à la prochaine étape du jeu de la vie
@@ -68,5 +116,10 @@ class Jdlv:
             for j in range(self.__m):
                 if self.__matrix[i][j] == "*":
                     list_new_lines[i][j] = "*"
+
+        for i in range(1, self.__n-1):
+            for j in range(1, self.__m-1):
+                self.__update_position(list_new_lines, i, j)
+
         # on renvoie la "version string"
         return Jdlv.__from_list_list_str_to_str(list_new_lines)
