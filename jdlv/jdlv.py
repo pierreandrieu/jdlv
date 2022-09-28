@@ -95,7 +95,7 @@ class Jdlv:
         """
         petri[i][j] = "."
 
-    def doit_mourir(self, i: int, j: int) -> bool:
+    def __doit_mourir(self, i: int, j: int) -> bool:
         """
         :param i: coordonnée x de la cellule
         :param j: coordonnée y de la cellule
@@ -113,10 +113,6 @@ class Jdlv:
         return len([(x, y) for x in range(i-1, i+2) for y in range(j-1, j+2) if  self.__inside(x, y) and
                    self.contient_cellule(x, y) and not (x == i and y == j)] )
 
-
-    def voisins(self, x: int, y: int):
-        return self.__nb_voisins(x, y)
-
     def __update_position(self, petri: List[List[str]], i: int, j: int):
         """
         :param petri: La boite de pétri
@@ -124,7 +120,7 @@ class Jdlv:
         :param j: coordonnée y d'intérêt
         """
         if self.contient_cellule(i, j):
-            if self.doit_mourir(i, j):
+            if self.__doit_mourir(i, j):
                 Jdlv.__tue_cellule(petri, i, j)
         else:
             if self.__doit_naitre(i, j):
