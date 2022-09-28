@@ -83,7 +83,8 @@ class Jdlv:
         :param j: coordonnée y de la cellule
         :return: True ssi la cellule doit mourir
         """
-        return self.__nb_voisins(i, j) < 2
+        nb_voisins = self.__nb_voisins(i, j)
+        return not 2 <= nb_voisins <= 3
 
     def __nb_voisins(self, i: int, j: int) -> int:
         """
@@ -100,7 +101,7 @@ class Jdlv:
         :param i: coordonnée x d'intérêt
         :param j: coordonnée y d'intérêt
         """
-        if self.__doit_mourir(i, j):
+        if self.contient_cellule(i, j) and self.__doit_mourir(i, j):
             Jdlv.__tue_cellule(petri, i, j)
 
     def next_generation(self) -> str:
