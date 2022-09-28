@@ -41,10 +41,6 @@ class Jdlv:
         """
         return self.__matrix[i][j] == "*"
 
-    @staticmethod
-    def pose_cellule(petri: List[List[str]], i: int, j: int):
-        petri[i][j] = "*"
-
     def __petri_vide(self) -> List[List[str]]:
         """
         fonction qui renvoie une liste de n listes contenant chacune m fois la chaîne "."
@@ -66,6 +62,25 @@ class Jdlv:
         :return: str suivant : les List[str] sont concaténées en str et séparées entre elles par "\n"
         """
         return "\n".join(["".join(petri[i]) for i in range(len(petri))])
+
+    @staticmethod
+    def __pose_cellule(petri: List[List[str]], i: int, j: int):
+        """
+        :param petri: la boîte de pétri
+        :param i: coordonnée x de la cellule à tuer
+        :param j: coordonnée y de la cellule à tuer
+        :return:
+        """
+        petri[i][j] = "*"
+
+    def __doit_naitre(self, i: int, j: int) -> bool:
+        """
+        :param i: coordonnée x de la cellule
+        :param j: coordonnée y de la cellule
+        :return: True ssi la cellule doit mourir
+        """
+        nb_voisins = self.__nb_voisins(i, j)
+        return nb_voisins == 3
 
     @staticmethod
     def __tue_cellule(petri: List[List[str]], i: int, j: int):
@@ -101,8 +116,12 @@ class Jdlv:
         :param i: coordonnée x d'intérêt
         :param j: coordonnée y d'intérêt
         """
-        if self.contient_cellule(i, j) and self.__doit_mourir(i, j):
-            Jdlv.__tue_cellule(petri, i, j)
+        if self.contient_cellule(i, j):
+            if self.__doit_mourir(i, j):
+                Jdlv.__tue_cellule(petri, i, j)
+        else:
+            if self.__doit_naitre(i, j):
+                self.__pose_cellule(petri, i, j)
 
     def next_generation(self) -> str:
         """

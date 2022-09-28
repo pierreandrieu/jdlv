@@ -85,9 +85,13 @@ def tests_mise_a_jour():
         test_mort_sous_population()
         test_mort_sur_population()
 
+    def test_reproduction():
+        test_comparaison(path_file="jdlv_7.txt")
+
     test_vide()
     test_point_fixe_non_vide()
     test_cellule_meurt()
+    test_reproduction()
 
 
 tests_initialisation()
